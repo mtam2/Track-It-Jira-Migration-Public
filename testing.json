@@ -1,0 +1,29 @@
+{
+  "log_file" : "testing.log",
+  "traceback_file": "traceback_test.log",
+  "jira_fields": {
+    "project": {
+      "key": "SRQ"
+    }
+  },
+  "ticket_duetime_mapping_days": {
+    "Low":6,
+    "Routine":6,
+    "Medium":4,
+    "High":2,
+    "Urgent":0,
+    "Critical":0
+  },
+  "database_cnf": {
+    "host": "trackit_db",
+    "user": "jiraapi",
+    "password": "password",
+    "database": "TRACKIT_DATA"
+  },
+  "jira_authorization":"Basic YXBpOlBhc3N3b3Jk",
+  "trackit_api_username":"tam",
+  "jira_server_address":"jira.org",
+  "trackIT_server_address":"trackit.org",
+  "attachment_folder":"\\\\trackit_server\\BMC Software\\Track-It!\\Track-It! Services\\FileStorageData\\Repositories\\IncidentRepository",
+  "sql":"use TRACKIT_DATA; SELECT wo_num 'Workorder Number', priority 'Priority', LEFT(CONVERT(VARCHAR, REQDATE, 120), 10) AS 'Request Date', task AS 'Summary', request 'Requestor', CASE RESPONS WHEN 'Maxim Tam' THEN 'tammax' END AS 'Assignee Username', LEFT(CONVERT(VARCHAR, duedate, 120), 10) AS 'Due Date', LEFT(CONVERT(VARCHAR, modidate, 120), 10) AS 'Modify Date', TRACKIT_DATA.dbo.tasks.dept, type, wotype2 'Subtype', wotype3 'Category', respons 'Assigned Technician', descript 'Description', note 'Notes', lookup1 'Company'  FROM TRACKIT_DATA.dbo.tasks  WHERE tasks.respons in ('Maxim Tam')  and priority in ('Ongoing Support','High','Urgent','Critical','Routine','Project') and WorkOrderStatusId = 1  and reqdate >= '2017-07-11'  ORDER BY RESPONS, WO_NUM DESC;"
+}
